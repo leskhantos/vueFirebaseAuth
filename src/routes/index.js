@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Login from '../components/Login'
 import Register from '../components/Register'
 import Dashboard from '../components/Dashboard'
+import createPost from "../components/createPost";
 
 Vue.use(Router)
 
@@ -11,8 +12,8 @@ const router = new Router({
     base: process.env.BASE_URL,
     routes: [
         {
-            path: '/login',
-            name: 'login',
+            path: '/',
+            name: 'index',
             component: Login
         },
         {
@@ -21,9 +22,14 @@ const router = new Router({
             component: Register
         },
         {
-            path: '/dashboard',
+            path: '/posts',
             name: 'Dashboard',
             component: Dashboard
+        },
+        {
+            path: '/create-post',
+            name: 'create-post',
+            component: createPost
         }
     ]
 });

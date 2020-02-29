@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <router-link to="/" class="navbar-brand">Vue Firebase Auth</router-link>
+            <router-link to="/" class="navbar-brand">Leskhantos Blog</router-link>
             <button
                     class="navbar-toggler"
                     type="button"
@@ -19,15 +19,15 @@
                     <template v-if="user.loggedIn">
                         <div class="nav-item">{{user.data.displayName}}</div>
                         <li class="nav-item">
-                            <a class="nav-link" @click.prevent="signOut">Sign out</a>
+                            <a class="nav-link" @click.prevent="signOut">Выйти</a>
                         </li>
                     </template>
                     <template v-else>
                         <li class="nav-item">
-                            <router-link to="login" class="nav-link">Login</router-link>
+                            <router-link to="login" class="nav-link">Войти</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link to="register" class="nav-link">Register</router-link>
+                            <router-link to="register" class="nav-link">Регистрация</router-link>
                         </li>
                     </template>
                 </ul>

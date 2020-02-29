@@ -7,7 +7,7 @@ import store from "./store";
 Vue.config.productionTip = false
 
 const configOptions = {
-///
+//
 };
 
 firebase.initializeApp(configOptions);
