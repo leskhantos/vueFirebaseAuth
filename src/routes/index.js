@@ -23,7 +23,7 @@ const router = new Router({
         },
         {
             path: '/posts',
-            name: 'Dashboard',
+            name: 'posts',
             component: Dashboard
         },
         {

@@ -54,7 +54,6 @@
 
 <script>
     import firebase from "firebase";
-
     export default {
         data() {
             return {
@@ -71,7 +70,7 @@
                     .auth()
                     .signInWithEmailAndPassword(this.form.email, this.form.password)
                     .then(() => {
-                        this.$router.replace({ name: "Dashboard" });
+                        this.$router.push({ name: "posts" });
                     })
                     .catch(err => {
                         this.error = err.message;

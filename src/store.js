@@ -19,6 +19,9 @@ export default new Vuex.Store({
         },
         SET_USER(state, data) {
             state.user.data = data;
+        },
+        SET_POSTS(state,posts){
+            state.posts = posts
         }
     },
     actions: {

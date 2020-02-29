@@ -1,7 +1,8 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <router-link to="/" class="navbar-brand">Leskhantos Blog</router-link>
+            <router-link  v-if="user.loggedIn" to="/posts" class="navbar-brand">Leskhantos Blog</router-link>
+            <router-link  v-else to="/" class="navbar-brand">Leskhantos Blog</router-link>
             <button
                     class="navbar-toggler"
                     type="button"
@@ -17,14 +18,16 @@
                 <ul class="navbar-nav mr-auto"></ul>
                 <ul class="navbar-nav ml-auto">
                     <template v-if="user.loggedIn">
-                        <div class="nav-item">{{user.data.displayName}}</div>
+                        <li class="nav-item">
+                            <router-link class="nav-link" to="/create-post">Создать пост</router-link>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" @click.prevent="signOut">Выйти</a>
                         </li>
                     </template>
                     <template v-else>
                         <li class="nav-item">
-                            <router-link to="login" class="nav-link">Войти</router-link>
+                            <router-link to="/" class="nav-link">Войти</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link to="register" class="nav-link">Регистрация</router-link>
@@ -41,7 +44,6 @@
     export default {
         computed: {
             ...mapGetters({
-// map `this.user` to `this.$store.getters.user`
                 user: "user"
             })
         },
@@ -52,7 +54,7 @@
                     .signOut()
                     .then(() => {
                         this.$router.replace({
-                            name: "home"
+                            name: "index"
                         });
                     });
             }

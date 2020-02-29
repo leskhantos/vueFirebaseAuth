@@ -1,8 +1,10 @@
 <template>
-    <form action="#" @submit.prevent="">
+    <form action="#" @submit.prevent="createPost">
+        <div  class="alert alert-success" role="alert" v-show="success">
+            Добавлено
+        </div>
         <div class="form-group row">
             <label for="title" class="col-md-4 col-form-label text-md-right">Тема</label>
-
             <div class="col-md-6">
                 <input
                         id="title"
@@ -44,18 +46,37 @@
 
 <script>
     import { mapGetters } from "vuex";
+    import firebase from 'firebase'
     export default {
         computed: {
             ...mapGetters({
                 user: "user"
-            })
+            }),
         },
         data(){
             return{
                 form:{
                     title:'',
                     text:''
-                }
+                },
+                success:false
+            }
+        },
+        methods:{
+            createPost(){
+                const postCol = firebase.firestore().collection('posts')
+                postCol.add({
+                    createdAt: new Date(),
+                    title: this.form.title,
+                    text:this.form.text
+                }).then(()=>{
+                    this.form.title= '',
+                    this.form.text= ''
+                    this.success = true
+                    this.$router.push('posts')
+                }).catch(()=>{
+                    console.log('err')
+                })
             }
         }
     };
