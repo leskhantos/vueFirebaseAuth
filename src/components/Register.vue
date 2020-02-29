@@ -94,7 +94,9 @@
                             .updateProfile({
                                 displayName: this.form.name
                             })
-                            .then(() => {});
+                            .then(() => {
+                                this.$router.push('/posts')
+                            });
                     })
                     .catch(err => {
                         this.error = err.message;
